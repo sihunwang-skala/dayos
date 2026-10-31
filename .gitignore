@@ -1,0 +1,52 @@
+# --- Secrets / local config ---
+.env
+.env.*
+!.env.example
+
+# --- Large ML artifacts: these live on the external drive, never in git ---
+# (anchored to the repo root so source dirs like src/models/ stay tracked)
+dayos-assets/
+/models/
+/checkpoints/
+/experiments/
+/datasets/raw/
+/datasets/processed/
+/cache/
+*.safetensors
+*.gguf
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.h5
+*.npz
+*.parquet
+*.arrow
+*.tar
+*.tar.gz
+*.zip
+*.7z
+*.sqlite
+*.db
+.cache/
+.huggingface/
+DAYOS_MANIFEST.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Node ---
+node_modules/
+dist/
+.next/
+
+# --- macOS ---
+.DS_Store
+._*

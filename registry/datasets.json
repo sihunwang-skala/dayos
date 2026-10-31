@@ -1,0 +1,177 @@
+{
+  "_comment": "Machine-readable dataset registry consumed by scripts/download-dataset.py. Human-readable details live in docs/DATA_STRATEGY.md. 'sample' downloads a small subset; 'full' requires --full. 'manual' sources are never fetched automatically.",
+  "schema_version": 1,
+  "datasets": {
+    "taskmaster1": {
+      "source": "url",
+      "license": "CC-BY-4.0",
+      "commercial_use": "yes (attribution)",
+      "sample": {
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-1-2019/sample.json",
+            "name": "sample.json"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-1-2019/ontology.json",
+            "name": "ontology.json"
+          }
+        ],
+        "approx_gb": 0.001
+      },
+      "full": {
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-1-2019/woz-dialogs.json",
+            "name": "woz-dialogs.json"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-1-2019/self-dialogs.json",
+            "name": "self-dialogs.json"
+          }
+        ],
+        "approx_gb": 0.1
+      },
+      "revision": "d92cb6af3005f1dc09c39e75e7daf4a04905e00b"
+    },
+    "taskmaster2": {
+      "source": "url",
+      "revision": "d92cb6af3005f1dc09c39e75e7daf4a04905e00b",
+      "license": "CC-BY-4.0",
+      "commercial_use": "yes (attribution)",
+      "_note": "The HF copy (google-research-datasets/taskmaster2) is only a loader script; files come from GitHub pinned to a commit.",
+      "sample": {
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-2-2020/data/food-ordering.json",
+            "name": "food-ordering.json"
+          }
+        ],
+        "approx_gb": 0.006
+      },
+      "full": {
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-2-2020/data/flights.json",
+            "name": "flights.json"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-2-2020/data/food-ordering.json",
+            "name": "food-ordering.json"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-2-2020/data/hotels.json",
+            "name": "hotels.json"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-2-2020/data/movies.json",
+            "name": "movies.json"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-2-2020/data/music.json",
+            "name": "music.json"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-2-2020/data/restaurant-search.json",
+            "name": "restaurant-search.json"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/google-research-datasets/Taskmaster/d92cb6af3005f1dc09c39e75e7daf4a04905e00b/TM-2-2020/data/sports.json",
+            "name": "sports.json"
+          }
+        ],
+        "approx_gb": 0.123
+      }
+    },
+    "smcalflow": {
+      "source": "url",
+      "license": "CC-BY-SA-4.0",
+      "commercial_use": "yes, but ShareAlike applies to derived datasets",
+      "_note": "Official data is linked from the Microsoft repo README (microsoft/task_oriented_dialogue_as_dataflow_synthesis). The exact archive URL/version must be confirmed before enabling; left empty on purpose.",
+      "sample": {
+        "files": [],
+        "approx_gb": 0.0
+      },
+      "full": {
+        "files": [],
+        "approx_gb": 0.1
+      }
+    },
+    "proactive-agent": {
+      "source": "url",
+      "license": "Apache-2.0",
+      "commercial_use": "yes",
+      "_note": "thunlp/ProactiveAgent (arXiv 2410.12361), pinned commit. Sample = a few ProactiveBench test files; full set is not wired up yet (pull dataset/ via git at the pinned commit when needed).",
+      "sample": {
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/thunlp/ProactiveAgent/3fcf9beebe256b86871659fbb12541c41c9381b9/dataset/test_data/splits.json",
+            "name": "splits.json"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/thunlp/ProactiveAgent/3fcf9beebe256b86871659fbb12541c41c9381b9/dataset/test_data/code_11.json",
+            "name": "code_11.json"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/thunlp/ProactiveAgent/3fcf9beebe256b86871659fbb12541c41c9381b9/dataset/test_data/writing_11.json",
+            "name": "writing_11.json"
+          }
+        ],
+        "approx_gb": 0.0001
+      },
+      "full": {
+        "files": [],
+        "approx_gb": 0.0
+      },
+      "revision": "3fcf9beebe256b86871659fbb12541c41c9381b9"
+    },
+    "proagentbench": {
+      "source": "hf",
+      "repo_id": "qv9n2xk7m1z8pt4/ProAgentBench",
+      "revision": "b5388f02dd99777af1d5ea473ccb3436276e7c05",
+      "license": "other (unverified)",
+      "commercial_use": "unverified",
+      "_note": "10-100GB of real-user screenshots from an anonymous uploader. Metadata/README only until provenance and license are confirmed.",
+      "sample": {
+        "allow_patterns": [
+          "README.md",
+          "README_HF_ProAgentBench.md",
+          "croissant.json"
+        ],
+        "approx_gb": 0.001
+      },
+      "full": {
+        "blocked": true,
+        "approx_gb": 100.0
+      }
+    },
+    "atus": {
+      "source": "manual",
+      "license": "US federal government work (public domain); verify on bls.gov",
+      "commercial_use": "yes (verify)",
+      "instructions": "Download the multi-year or single-year ATUS data files from https://www.bls.gov/tus/data.htm into <DAYOS_ASSETS_ROOT>/datasets/raw/atus/. BLS may block scripted downloads; fetch in a browser.",
+      "sample": {
+        "files": [],
+        "approx_gb": 0.0
+      },
+      "full": {
+        "files": [],
+        "approx_gb": 1.0
+      }
+    },
+    "kr-time-use": {
+      "source": "manual",
+      "license": "KOSTAT / MDIS terms (microdata requires application; redistribution restricted)",
+      "commercial_use": "restricted (check MDIS terms)",
+      "instructions": "Korean Time Use Survey (생활시간조사) microdata is distributed via MDIS (https://mdis.kostat.go.kr). Apply and download manually into <DAYOS_ASSETS_ROOT>/datasets/raw/kr-time-use/. Never commit raw microdata.",
+      "sample": {
+        "files": [],
+        "approx_gb": 0.0
+      },
+      "full": {
+        "files": [],
+        "approx_gb": 1.0
+      }
+    }
+  }
+}
