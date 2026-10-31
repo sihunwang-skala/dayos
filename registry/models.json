@@ -1,0 +1,83 @@
+{
+  "_comment": "Machine-readable model download registry consumed by scripts/download-model.py. Human-readable details live in docs/MODEL_REGISTRY.md. Sizes are decimal GB measured from the Hugging Face API (files_metadata) on 2026-10-31. Revisions are pinned commit hashes; bump them deliberately.",
+  "schema_version": 1,
+  "models": {
+    "ax-4.0-light": {
+      "repo_id": "skt/A.X-4.0-Light",
+      "revision": "ba21c20ea1b31ded1ec3e2fb432335077dc4be98",
+      "official": true,
+      "subdir": "skt",
+      "download_gb": 14.5,
+      "allow_patterns": null,
+      "license": "Apache-2.0",
+      "local_feasible": "yes (BF16, 32GB unified memory; tight with long context)",
+      "status": "candidate"
+    },
+    "ax-3.1-light": {
+      "repo_id": "skt/A.X-3.1-Light",
+      "revision": "9b41bb2406472634d8812c0b8931fa40fa9a6c3a",
+      "official": true,
+      "subdir": "skt",
+      "download_gb": 14.5,
+      "allow_patterns": null,
+      "license": "Apache-2.0",
+      "local_feasible": "yes (BF16, 32GB unified memory)",
+      "status": "candidate"
+    },
+    "ax-4.0-light-gguf-q4km": {
+      "repo_id": "mykor/A.X-4.0-Light-gguf",
+      "revision": "b1cd7c8eee44c52ce4683545b7140658659e92cd",
+      "official": false,
+      "subdir": "other",
+      "download_gb": 4.44,
+      "allow_patterns": ["A.X-4.0-Light-Q4_K_M.gguf", "*.md", "*.json"],
+      "license": "Apache-2.0 (inherits base; community quantization, not verified by SKT)",
+      "local_feasible": "yes (llama.cpp / Ollama, ~6-8GB RAM)",
+      "status": "candidate-community"
+    },
+    "ax-3.1": {
+      "repo_id": "skt/A.X-3.1",
+      "revision": "1d994491339bc7087a7735796bb1dda40c2b0826",
+      "official": true,
+      "subdir": "skt",
+      "download_gb": 69.4,
+      "allow_patterns": null,
+      "license": "Apache-2.0",
+      "local_feasible": "no in BF16 (~70GB weights > 32GB RAM); only after 4-bit quantization (~20GB, unverified)",
+      "status": "not-recommended"
+    },
+    "ax-4.0": {
+      "repo_id": "skt/A.X-4.0",
+      "revision": "a3393fd67bf09a34a85e66dfd2c2da61c4497b67",
+      "official": true,
+      "subdir": "skt",
+      "download_gb": 143.8,
+      "allow_patterns": null,
+      "license": "Qwen License (commercial OK below 100M MAU)",
+      "local_feasible": "no (72B dense, ~144GB BF16)",
+      "status": "blocked-large"
+    },
+    "ax-k1": {
+      "repo_id": "skt/A.X-K1",
+      "revision": "bb56f50f36b6c0b7b0c108da02db47a5e3bd9ee1",
+      "official": true,
+      "subdir": "skt",
+      "download_gb": 1038.0,
+      "allow_patterns": null,
+      "license": "Apache-2.0",
+      "local_feasible": "no (519B MoE, multi-node GPU)",
+      "status": "blocked-large"
+    },
+    "ax-k2": {
+      "repo_id": "skt/A.X-K2",
+      "revision": "d0805cfd1fc647b4078c0d9f232c80d34ee0c893",
+      "official": true,
+      "subdir": "skt",
+      "download_gb": 694.4,
+      "allow_patterns": null,
+      "license": "Apache-2.0",
+      "local_feasible": "no (688B MoE FP8, >=800GiB aggregate GPU memory)",
+      "status": "blocked-large"
+    }
+  }
+}
