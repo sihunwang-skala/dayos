@@ -1,23 +1,36 @@
 # DayOS
 
-사용자가 직접 관리하는 캘린더, 자동 알림, 요청 시에만 나오는 AI 추천, 승인 기반 AI Agent를 갖춘 웹 기반 AI Planner입니다.
-A web-based AI planner with a user-driven calendar, automatic reminders, on-request AI recommendations, and an approval-based AI agent.
+**Context-Aware Personalized AI Planner**
+사용자가 직접 짠 일정과 개인 선호를 바탕으로, 요청했을 때 맞춤 준비 사항과 다음 행동을 제안하는 웹 기반 AI 플래너.
+A web-based planner that, on request, turns your own schedule and preferences into personalized preparation and next-step suggestions.
 
-> 상태 / Status: 기획·설계 단계. 앱 코드는 아직 없습니다. / Planning and design phase. No application code yet.
+> 상태 / Status: 기획·설계 단계. 앱 코드는 아직 없습니다. 아래 내용은 목표이며 구현된 기능이 아닙니다.
+> Planning and design phase. No application code yet. Everything below describes goals, not shipped features.
 
-AI는 일정을 임의로 바꾸지 않습니다. AI의 출력은 "제안"이며, 사용자가 승인한 것만 적용됩니다.
-The AI never changes your schedule on its own. Its output is a proposal, and only what you approve is applied.
+## Product Vision
 
-## 문서 / Documentation
+- **일정은 내가 직접.** 일정의 추가·수정은 사용자가 합니다. / You build your own schedule.
+- **개인화.** 일정, 선호, 우선순위, 이전 피드백을 바탕으로 추천합니다. / Suggestions use your schedule, preferences, priorities, and past feedback.
+- **요청할 때만 AI.** 요청하지 않으면 AI 추천은 나오지 않습니다. 알림은 AI 없이 규칙으로 동작합니다. / AI runs only when you ask.
+- **제안과 실행의 분리.** AI는 제안만 합니다. 일정 변경 등 실행은 사용자가 승인한 것만, 결과 기록과 함께 적용됩니다. / The AI only proposes; only what you approve is applied and logged.
+- **개인정보.** 사용자별 데이터 분리, 삭제 지원, 외부 AI에 보내기 전 동의. / Per-user data isolation, deletion, and consent before any data goes to an external model.
 
-| 문서 / Document | 내용 / Contents |
-|---|---|
-| [`docs/PRODUCT_SPEC.md`](docs/PRODUCT_SPEC.md) | 제품 명세 / Product spec |
-| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | 구조 설계 / Architecture |
-| [`docs/WORKFLOW.md`](docs/WORKFLOW.md) | 개발 흐름 / Development workflow |
-| [`docs/STORAGE_POLICY.md`](docs/STORAGE_POLICY.md) | 외장하드·저장공간 정책 / Storage policy |
-| [`docs/MODEL_REGISTRY.md`](docs/MODEL_REGISTRY.md) | 모델 조사·평가 기록 / Model registry |
-| [`docs/DATA_STRATEGY.md`](docs/DATA_STRATEGY.md) | 데이터셋 정책 / Data strategy |
+## High-level Architecture
+
+```text
+Browser (web app)
+   │
+App server ── auth / per-user data isolation
+   ├─ Calendar service        user-only writes
+   ├─ Reminder service        rule-based, no AI
+   └─ AI recommendation       on request only
+         ├─ Consent gate      before any external call
+         ├─ Proposals         AI output is stored here only
+         ├─ Execution log     approved changes and their results
+         └─ Model layer       model-agnostic adapters (cloud / local)
+```
+
+Concept 수준의 도식입니다. 구현 상세, 개인화 내부 로직, 평가 데이터는 공개 문서에 포함하지 않습니다.
 
 ## 저작권 및 사용 / Copyright & Usage
 
