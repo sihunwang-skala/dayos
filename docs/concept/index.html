@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DayOS Concept Mockup · 개념 목업</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --ink: #1c2230; --muted: #5b6577; --line: #e1e5ec;
+    --accent: #2f5bea; --accent-soft: #e8eeff; --ok: #1d7a4d; --ok-soft: #e4f4eb;
+    --warn: #8a5a00; --warn-soft: #fff4d9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  }
+  .banner {
+    background: var(--warn-soft); color: var(--warn); border-bottom: 1px solid #f0d99a;
+    padding: 10px 24px; font-weight: 600; text-align: center; font-size: 14px;
+  }
+  .banner small { display: block; font-weight: 500; }
+  header.top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px; background: var(--card); border-bottom: 1px solid var(--line);
+  }
+  .logo { font-weight: 800; letter-spacing: .2px; font-size: 18px; }
+  nav button {
+    border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    padding: 6px 12px; margin-left: 6px; border-radius: 8px; cursor: pointer; font: inherit; font-size: 13px;
+  }
+  nav button.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  main { max-width: 1040px; margin: 24px auto; padding: 0 24px 40px; display: grid; grid-template-columns: 1fr 340px; gap: 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  h2 { margin: 0 0 4px; font-size: 18px; }
+  .sub { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+  .event { display: flex; gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .event:first-of-type { border-top: 0; }
+  .time { width: 108px; color: var(--muted); font-variant-numeric: tabular-nums; font-size: 13px; padding-top: 2px; }
+  .ev-title { font-weight: 600; }
+  .tag { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); margin-left: 6px; }
+  .tag.ghost { background: var(--warn-soft); color: var(--warn); }
+  .row-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .btn { border: 1px solid var(--line); background: var(--card); padding: 8px 14px; border-radius: 8px; font: inherit; font-size: 14px; cursor: pointer; color: var(--ink); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .btn.ok { background: var(--ok); border-color: var(--ok); color: #fff; font-weight: 600; }
+  .note { font-size: 12.5px; color: var(--muted); }
+  .screen { display: none; } .screen.on { display: contents; }
+  ul.plain { list-style: none; padding: 0; margin: 8px 0; }
+  ul.plain li { padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 6px; display: flex; justify-content: space-between; gap: 10px; font-size: 14px; }
+  ul.plain li span:last-child { color: var(--muted); font-size: 12.5px; text-align: right; }
+  .excluded { background: #fafafa; color: var(--muted); }
+  .prop { border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+  .prop h3 { margin: 0 0 2px; font-size: 15px; }
+  .why { font-size: 12.5px; color: var(--muted); margin: 2px 0 10px; }
+  .diff { background: #f3f5f9; border-radius: 8px; padding: 10px 12px; font-size: 13.5px; margin: 8px 0; font-variant-numeric: tabular-nums; }
+  .diff .add { color: var(--ok); font-weight: 600; }
+  .log { font-size: 13px; }
+  .log div { padding: 6px 0; border-top: 1px solid var(--line); }
+  .log div:first-child { border-top: 0; }
+  .ok-pill { background: var(--ok-soft); color: var(--ok); border-radius: 99px; padding: 1px 8px; font-size: 11.5px; font-weight: 600; }
+  .side h3 { margin: 0 0 8px; font-size: 14px; }
+  .prefs { font-size: 13.5px; }
+  .prefs li { margin: 3px 0; }
+  @media (max-width: 860px) { main { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="banner">
+  CONCEPT MOCKUP — not a working product. Sample data is fictional.
+  <small>개념 목업 — 동작하는 제품이 아닙니다. 예시 데이터는 모두 가상입니다.</small>
+</div>
+
+<header class="top">
+  <div class="logo">DayOS</div>
+  <nav aria-label="Concept screens">
+    <button data-s="calendar">1 · Calendar / 캘린더</button>
+    <button data-s="consent">2 · Before sending / 전송 전 확인</button>
+    <button data-s="proposal">3 · Suggestions / 추천 제안</button>
+  </nav>
+</header>
+
+<main>
+  <!-- Screen 1 -->
+  <div class="screen" id="calendar">
+    <section class="card">
+      <h2>Tomorrow · Wed, Nov 12 / 내일 · 11월 12일 (수)</h2>
+      <p class="sub">You manage your own schedule. / 일정은 사용자가 직접 관리합니다.</p>
+      <div class="event"><div class="time">09:30–10:00</div><div><div class="ev-title">Team stand-up / 팀 스탠드업</div></div></div>
+      <div class="event"><div class="time">11:00–13:00</div><div><div class="ev-title">Free time / 빈 시간</div></div></div>
+      <div class="event"><div class="time">14:00–15:00</div><div><div class="ev-title">Quarterly presentation / 분기 발표 <span class="tag">High priority / 높음</span></div></div></div>
+      <div class="event"><div class="time">18:30–19:30</div><div><div class="ev-title">Dinner with a friend / 친구와 저녁</div></div></div>
+      <div class="row-actions">
+        <button class="btn">+ Add event / 일정 추가</button>
+        <button class="btn primary" data-go="consent">Get recommendations / 추천 받기</button>
+      </div>
+      <p class="note">AI is not called until you press the button. Reminders work without AI.<br>버튼을 누르기 전에는 AI가 호출되지 않습니다. 알림은 AI 없이 동작합니다.</p>
+    </section>
+    <aside class="card side">
+      <h3>Your preferences / 내 선호</h3>
+      <ul class="prefs">
+        <li>Review slides the evening before / 발표 자료는 전날 저녁까지 점검</li>
+        <li>30 min travel buffer / 이동 시간 30분 여유</li>
+        <li>Deep work in the morning / 집중 작업은 오전</li>
+      </ul>
+      <p class="note">Entered by you; edit or delete anytime.<br>직접 입력한 항목이며 언제든 수정·삭제할 수 있습니다.</p>
+    </aside>
+  </div>
+
+  <!-- Screen 2 -->
+  <div class="screen" id="consent">
+    <section class="card">
+      <h2>Review what will be sent / 전송 내용 확인</h2>
+      <p class="sub">To: Cloud model provider (example) · Nothing is sent until you agree.<br>받는 곳: 클라우드 모델 제공자(예시) · 동의하기 전에는 아무것도 전송되지 않습니다.</p>
+      <ul class="plain">
+        <li><span>Event titles &amp; times (Nov 12–13) / 일정 제목·시간</span><span>included / 포함</span></li>
+        <li><span>Priority marks / 우선순위 표시</span><span>included / 포함</span></li>
+        <li><span>Preferences (3) / 선호 3개</span><span>included / 포함</span></li>
+        <li><span>Recent feedback summary / 최근 피드백 요약</span><span>included / 포함</span></li>
+        <li class="excluded"><span>Event notes &amp; locations / 메모·위치</span><span>not sent / 전송 안 함</span></li>
+        <li class="excluded"><span>Other days / 다른 날짜 일정</span><span>not sent / 전송 안 함</span></li>
+      </ul>
+      <label class="note"><input type="checkbox"> I agree to send this to this provider. You can withdraw consent anytime.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이 제공자에게 전송하는 데 동의합니다. 동의는 언제든 철회할 수 있습니다.</label>
+      <div class="row-actions">
+        <button class="btn" data-go="calendar">Cancel / 취소</button>
+        <button class="btn primary" data-go="proposal">Agree &amp; send / 동의하고 보내기</button>
+      </div>
+    </section>
+    <aside class="card side">
+      <h3>Per-provider consent / 제공자별 동의</h3>
+      <p class="note">Consent is stored separately for each model provider.<br>동의는 모델 제공자마다 따로 저장됩니다.</p>
+    </aside>
+  </div>
+
+  <!-- Screen 3 -->
+  <div class="screen" id="proposal">
+    <section class="card">
+      <h2>Suggestions for tomorrow / 내일을 위한 제안</h2>
+      <p class="sub">Proposals only. Your schedule changes only if you accept.<br>제안일 뿐입니다. 수락해야만 일정에 반영됩니다.</p>
+
+      <div class="prop">
+        <h3>Prepare: final check of slides / 준비: 발표 자료 최종 점검</h3>
+        <div class="why">Why: high-priority presentation + your “review the evening before” preference.<br>이유: 우선순위 높은 발표 + “전날 저녁 점검” 선호.</div>
+        <div class="diff"><span class="add">+ Add</span> Today 17:30–18:30 “Review slides” / 오늘 17:30–18:30 “자료 점검” 추가</div>
+        <div class="row-actions">
+          <button class="btn ok">Accept / 수락</button><button class="btn">Reject / 거절</button><button class="btn">Later / 나중에</button>
+        </div>
+      </div>
+
+      <div class="prop">
+        <h3>Next step: travel buffer / 다음 행동: 이동 시간 확보</h3>
+        <div class="why">Why: your 30 min travel buffer preference.<br>이유: 이동 시간 30분 여유 선호.</div>
+        <div class="diff"><span class="add">+ Add</span> Tomorrow 13:30–14:00 “Travel &amp; setup” / 내일 13:30–14:00 “이동·준비” 추가</div>
+        <div class="row-actions">
+          <button class="btn ok">Accept / 수락</button><button class="btn">Reject / 거절</button><button class="btn">Later / 나중에</button>
+        </div>
+      </div>
+
+      <div class="prop">
+        <h3>AI draft: opening lines / AI 초안: 발표 시작 멘트 <span class="tag ghost">Draft only / 초안만</span></h3>
+        <div class="why">Text only. Nothing is sent or scheduled.<br>텍스트만 제공합니다. 전송·일정 등록은 하지 않습니다.</div>
+        <div class="row-actions"><button class="btn">View draft / 초안 보기</button></div>
+      </div>
+    </section>
+    <aside class="card side">
+      <h3>Execution log / 실행 기록</h3>
+      <div class="log">
+        <div><span class="ok-pill">Applied / 적용됨</span><br>“Review slides” added, approved by you at 16:42<br>“자료 점검” 추가 · 16:42 사용자 승인</div>
+        <div>Proposal #12 · model: <i>example-model</i> · 3.1 s<br>제안 #12 · 모델: 예시 · 3.1초</div>
+      </div>
+      <p class="note">Every applied change is recorded and visible to you.<br>적용된 변경은 모두 기록되며 사용자가 볼 수 있습니다.</p>
+    </aside>
+  </div>
+</main>
+
+<script>
+  var names = ["calendar", "consent", "proposal"];
+  function show(name) {
+    if (names.indexOf(name) < 0) name = "calendar";
+    names.forEach(function (n) { document.getElementById(n).classList.toggle("on", n === name); });
+    document.querySelectorAll("nav button").forEach(function (b) { b.classList.toggle("on", b.dataset.s === name); });
+    if (location.hash !== "#" + name) history.replaceState(null, "", "#" + name);
+  }
+  document.querySelectorAll("nav button").forEach(function (b) { b.onclick = function () { show(b.dataset.s); }; });
+  document.querySelectorAll("[data-go]").forEach(function (b) { b.onclick = function () { show(b.dataset.go); }; });
+  show(location.hash.slice(1));
+</script>
+</body>
+</html>

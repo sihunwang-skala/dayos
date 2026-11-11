@@ -32,6 +32,32 @@ App server ── auth / per-user data isolation
 
 Concept 수준의 도식입니다. 구현 상세, 개인화 내부 로직, 평가 데이터는 공개 문서에 포함하지 않습니다.
 
+## Concept UI Preview / 개념 UI 미리보기
+
+> **개념 목업입니다. 동작하는 제품 화면이 아닙니다.** 예시 데이터는 모두 가상이며, 앱 코드는 아직 없습니다.
+> **These are concept mockups, not screenshots of a working product.** All data is fictional and no application code exists yet.
+
+정적 HTML 한 장으로 만든 설명용 화면입니다. / A single static HTML page for illustration: [`docs/concept/index.html`](docs/concept/index.html)
+
+| # | Screen / 화면 | What it shows / 보여 주는 것 |
+|---|---|---|
+| 1 | Calendar / 캘린더 | 사용자가 직접 관리하는 일정, 선호, "추천 받기" 버튼 (누르기 전에는 AI 호출 없음) / User-managed schedule and preferences; no AI call until requested |
+| 2 | Before sending / 전송 전 확인 | 모델에 보낼 정보를 미리 보여 주고 동의를 받음 / Shows exactly what will be sent and asks for consent |
+| 3 | Suggestions / 추천 제안 | 수락·거절 가능한 제안 카드와 실행 기록 / Proposal cards with accept/reject and an execution log |
+
+![Concept 1: Calendar / 캘린더](docs/assets/concept-calendar.png)
+![Concept 2: Before sending / 전송 전 확인](docs/assets/concept-consent.png)
+![Concept 3: Suggestions / 추천 제안](docs/assets/concept-proposal.png)
+
+## Project Status / 프로젝트 현황
+
+| Area / 영역 | Status / 상태 |
+|---|---|
+| Product definition / 제품 정의 | 초안 완료 / Draft complete |
+| Architecture / 구조 설계 | 초안 완료 / Draft complete |
+| Concept UI / 개념 UI | 목업 / Mockup only |
+| Application code / 앱 코드 | 없음 / Not started |
+
 ## 저작권 및 사용 / Copyright & Usage
 
 ### English
