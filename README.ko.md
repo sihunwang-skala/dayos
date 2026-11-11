@@ -1,12 +1,34 @@
-# DayOS
+<h1 align="center">DayOS</h1>
 
-[English](README.md) | [한국어](README.ko.md)
+<p align="center">
+  <b>맥락 기반 개인화 AI 플래너 (Context-Aware Personalized AI Planner)</b><br>
+  내 일정과 선호를 바탕으로, 요청할 때만 AI가 제안하고 승인한 것만 반영합니다.
+</p>
 
-**Context-Aware Personalized AI Planner (맥락 기반 개인화 AI 플래너)**
+<p align="center">
+  <a href="README.md">English</a> | <a href="README.ko.md">한국어</a>
+</p>
 
-사용자가 직접 짠 일정과 개인 선호를 바탕으로, 요청했을 때 맞춤 준비 사항과 다음 행동을 제안하는 웹 기반 AI 플래너입니다.
+<p align="center">
+  <img alt="Status: planning" src="https://img.shields.io/badge/status-planning%20%26%20design-orange">
+  <img alt="UI: concept mockup" src="https://img.shields.io/badge/UI-concept%20mockup-blue">
+  <img alt="License: all rights reserved" src="https://img.shields.io/badge/license-all%20rights%20reserved-lightgrey">
+</p>
+
+<p align="center">
+  <img src="docs/assets/dayos-concept-walkthrough.ko.gif" alt="개념 목업 시연" width="820"><br>
+  <sub>개념 목업 시연 (한국어 자막). 동작하는 제품이 아니며 모든 데이터는 가상입니다.</sub>
+</p>
 
 > **상태:** 기획·설계 단계입니다. 앱 코드는 아직 없습니다. 아래 내용은 목표이며 구현된 기능이 아닙니다.
+
+## 목차
+
+- [제품 비전](#제품-비전)
+- [개념 UI](#개념-ui)
+- [상위 수준 구조](#상위-수준-구조)
+- [프로젝트 현황](#프로젝트-현황)
+- [저작권 및 사용](#저작권-및-사용)
 
 ## 제품 비전
 
@@ -15,6 +37,21 @@
 - **요청할 때만 AI.** 요청하지 않으면 추천은 나오지 않습니다. 알림은 AI 없이 규칙으로 동작합니다.
 - **제안과 실행의 분리.** AI는 제안만 합니다. 사용자가 승인한 것만 적용되며, 적용된 변경은 모두 기록됩니다.
 - **개인정보.** 사용자별 데이터 분리, 삭제 지원, 외부 모델에 보내기 전 동의.
+
+## 개념 UI
+
+> **개념 목업이며 동작하는 제품 화면이 아닙니다.** 예시 데이터는 모두 가상이고 앱 코드는 아직 없습니다.
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/assets/concept-calendar.ko.png" alt="1. 캘린더"><br><sub>1. 캘린더</sub></td>
+    <td align="center"><img src="docs/assets/concept-consent.ko.png" alt="2. 전송 전 확인"><br><sub>2. 전송 전 확인</sub></td>
+    <td align="center"><img src="docs/assets/concept-proposal.ko.png" alt="3. 추천 제안"><br><sub>3. 추천 제안</sub></td>
+  </tr>
+</table>
+
+- 직접 보기: 브라우저에서 [`docs/concept/index.html`](docs/concept/index.html)을 여세요 (영어 / 한국어 전환 포함).
+- 영상: [MP4, 한국어 자막](docs/assets/dayos-concept-walkthrough.ko.mp4). 실제 제품 화면 녹화가 아니라 목업에서 생성했습니다.
 
 ## 상위 수준 구조
 
@@ -32,30 +69,6 @@
 ```
 
 개념 수준의 도식입니다. 구현 상세, 개인화 내부 로직, 평가 데이터는 공개 문서에 포함하지 않습니다.
-
-## 개념 UI 미리보기
-
-> **개념 목업입니다. 동작하는 제품 화면이 아닙니다.** 예시 데이터는 모두 가상이며, 앱 코드는 아직 없습니다.
-
-영어 / 한국어 전환이 되는 정적 HTML 한 장입니다: [`docs/concept/index.html`](docs/concept/index.html) (브라우저에서 열어 보세요).
-
-| 화면 | 보여 주는 것 |
-|---|---|
-| 1. 캘린더 | 사용자가 관리하는 일정과 선호. 요청하기 전에는 AI 호출 없음 |
-| 2. 전송 전 확인 | 모델에 보낼 정보를 미리 보여 주고 동의를 받음 |
-| 3. 추천 제안 | 수락·거절할 수 있는 제안 카드와 실행 기록 |
-
-![개념 1: 캘린더](docs/assets/concept-calendar.ko.png)
-![개념 2: 전송 전 확인](docs/assets/concept-consent.ko.png)
-![개념 3: 추천 제안](docs/assets/concept-proposal.ko.png)
-
-### 사용 방법 영상
-
-개념 목업을 자막과 함께 보여 주는 짧은 시연입니다(한국어 자막). 실제 제품을 화면 녹화한 것이 아니라 목업에서 생성한 영상입니다.
-
-![시연 (한국어 자막)](docs/assets/dayos-concept-walkthrough.ko.gif)
-
-[MP4 내려받기 (한국어 자막)](docs/assets/dayos-concept-walkthrough.ko.mp4)
 
 ## 프로젝트 현황
 

@@ -1,12 +1,34 @@
-# DayOS
+<h1 align="center">DayOS</h1>
 
-[English](README.md) | [한국어](README.ko.md)
+<p align="center">
+  <b>Context-Aware Personalized AI Planner</b><br>
+  Your schedule, your preferences — AI suggestions only when you ask, applied only when you approve.
+</p>
 
-**Context-Aware Personalized AI Planner**
+<p align="center">
+  <a href="README.md">English</a> | <a href="README.ko.md">한국어</a>
+</p>
 
-A web-based planner that, on request, turns your own schedule and preferences into personalized preparation and next-step suggestions.
+<p align="center">
+  <img alt="Status: planning" src="https://img.shields.io/badge/status-planning%20%26%20design-orange">
+  <img alt="UI: concept mockup" src="https://img.shields.io/badge/UI-concept%20mockup-blue">
+  <img alt="License: all rights reserved" src="https://img.shields.io/badge/license-all%20rights%20reserved-lightgrey">
+</p>
+
+<p align="center">
+  <img src="docs/assets/dayos-concept-walkthrough.ko.gif" alt="Walkthrough of the concept mockup" width="820"><br>
+  <sub>Concept mockup walkthrough (Korean captions). Not a working product; all data is fictional.</sub>
+</p>
 
 > **Status:** Planning and design phase. No application code yet. Everything below describes goals, not shipped features.
+
+## Contents
+
+- [Product Vision](#product-vision)
+- [Concept UI](#concept-ui)
+- [High-level Architecture](#high-level-architecture)
+- [Project Status](#project-status)
+- [Copyright & Usage](#copyright--usage)
 
 ## Product Vision
 
@@ -15,6 +37,21 @@ A web-based planner that, on request, turns your own schedule and preferences in
 - **AI only when you ask.** Nothing is recommended unless you request it. Reminders run on plain rules, without AI.
 - **Proposals are separate from actions.** The AI only proposes. Only what you approve is applied, and every applied change is logged.
 - **Privacy.** Per-user data isolation, deletion support, and consent before any data goes to an external model.
+
+## Concept UI
+
+> **Concept mockups, not screenshots of a working product.** All data is fictional and no application code exists yet.
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/assets/concept-calendar.en.png" alt="1. Calendar"><br><sub>1. Calendar</sub></td>
+    <td align="center"><img src="docs/assets/concept-consent.en.png" alt="2. Before sending"><br><sub>2. Before sending</sub></td>
+    <td align="center"><img src="docs/assets/concept-proposal.en.png" alt="3. Suggestions"><br><sub>3. Suggestions</sub></td>
+  </tr>
+</table>
+
+- Try it: open [`docs/concept/index.html`](docs/concept/index.html) in a browser (English / Korean switch included).
+- Video: [MP4, Korean captions](docs/assets/dayos-concept-walkthrough.ko.mp4). Generated from the mockup, not a screen recording of a real product.
 
 ## High-level Architecture
 
@@ -32,30 +69,6 @@ App server ── auth / per-user data isolation
 ```
 
 A concept-level diagram. Implementation details, internal personalization logic, and evaluation data are not part of the public documentation.
-
-## Concept UI Preview
-
-> **These are concept mockups, not screenshots of a working product.** All data is fictional and no application code exists yet.
-
-A single static HTML page with an English / Korean language switch: [`docs/concept/index.html`](docs/concept/index.html) (open it in a browser).
-
-| Screen | What it shows |
-|---|---|
-| 1. Calendar | A user-managed schedule and preferences; no AI call until you request one |
-| 2. Before sending | Exactly what will be sent to the model, and a consent step |
-| 3. Suggestions | Proposal cards with accept / reject, and an execution log |
-
-![Concept 1: Calendar](docs/assets/concept-calendar.en.png)
-![Concept 2: Before sending](docs/assets/concept-consent.en.png)
-![Concept 3: Suggestions](docs/assets/concept-proposal.en.png)
-
-### Walkthrough video
-
-A short walkthrough of the concept mockup with Korean captions. It is generated from the mockup, not a screen recording of a real product.
-
-![Walkthrough (Korean captions)](docs/assets/dayos-concept-walkthrough.ko.gif)
-
-[Download MP4 (Korean captions)](docs/assets/dayos-concept-walkthrough.ko.mp4)
 
 ## Project Status
 
