@@ -8,182 +8,261 @@
   :root {
     --bg: #f6f7f9; --card: #ffffff; --ink: #1c2230; --muted: #5b6577; --line: #e1e5ec;
     --accent: #2f5bea; --accent-soft: #e8eeff; --ok: #1d7a4d; --ok-soft: #e4f4eb;
-    --warn: #8a5a00; --warn-soft: #fff4d9;
+    --warn: #8a5a00; --warn-soft: #fff4d9; --hl: #e8590c;
   }
   * { box-sizing: border-box; }
   body {
     margin: 0; background: var(--bg); color: var(--ink);
     font: 15px/1.5 -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   }
-  .banner {
-    background: var(--warn-soft); color: var(--warn); border-bottom: 1px solid #f0d99a;
-    padding: 10px 24px; font-weight: 600; text-align: center; font-size: 14px;
-  }
-  .banner small { display: block; font-weight: 500; }
-  header.top {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 24px; background: var(--card); border-bottom: 1px solid var(--line);
-  }
-  .logo { font-weight: 800; letter-spacing: .2px; font-size: 18px; }
-  nav button {
-    border: 1px solid var(--line); background: var(--card); color: var(--ink);
-    padding: 6px 12px; margin-left: 6px; border-radius: 8px; cursor: pointer; font: inherit; font-size: 13px;
-  }
-  nav button.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  /* language modes: en | ko | both */
+  body.l-en .ko, body.l-en .sep { display: none; }
+  body.l-ko .en, body.l-ko .sep { display: none; }
+  .tb .sep { display: block; }
+  body.l-both .tb .sep { height: 0; }
+
+  .banner { background: var(--warn-soft); color: var(--warn); border-bottom: 1px solid #f0d99a; padding: 10px 24px; font-weight: 600; text-align: center; font-size: 14px; }
+  body.l-both .banner .tb span { display: block; }
+  body.l-both .banner .tb .ko { font-weight: 500; font-size: 13px; }
+  header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 12px 24px; background: var(--card); border-bottom: 1px solid var(--line); }
+  .logo { font-weight: 800; font-size: 18px; }
+  .navs { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .navs button, .langs button { border: 1px solid var(--line); background: var(--card); color: var(--ink); padding: 6px 12px; border-radius: 8px; cursor: pointer; font: inherit; font-size: 13px; }
+  .navs button.on, .langs button.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .langs { display: flex; gap: 4px; margin-left: 12px; padding-left: 12px; border-left: 1px solid var(--line); }
   main { max-width: 1040px; margin: 24px auto; padding: 0 24px 40px; display: grid; grid-template-columns: 1fr 340px; gap: 20px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
   h2 { margin: 0 0 4px; font-size: 18px; }
   .sub { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
   .event { display: flex; gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); }
-  .event:first-of-type { border-top: 0; }
-  .time { width: 108px; color: var(--muted); font-variant-numeric: tabular-nums; font-size: 13px; padding-top: 2px; }
+  .event.first { border-top: 0; }
+  .time { width: 108px; color: var(--muted); font-variant-numeric: tabular-nums; font-size: 13px; padding-top: 2px; flex: none; }
   .ev-title { font-weight: 600; }
-  .tag { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); margin-left: 6px; }
+  .tag { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); margin-left: 6px; font-weight: 500; }
   .tag.ghost { background: var(--warn-soft); color: var(--warn); }
   .row-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
   .btn { border: 1px solid var(--line); background: var(--card); padding: 8px 14px; border-radius: 8px; font: inherit; font-size: 14px; cursor: pointer; color: var(--ink); }
   .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
   .btn.ok { background: var(--ok); border-color: var(--ok); color: #fff; font-weight: 600; }
+  .btn.done { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); cursor: default; }
   .note { font-size: 12.5px; color: var(--muted); }
   .screen { display: none; } .screen.on { display: contents; }
   ul.plain { list-style: none; padding: 0; margin: 8px 0; }
   ul.plain li { padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 6px; display: flex; justify-content: space-between; gap: 10px; font-size: 14px; }
-  ul.plain li span:last-child { color: var(--muted); font-size: 12.5px; text-align: right; }
+  ul.plain li span.r { color: var(--muted); font-size: 12.5px; text-align: right; }
   .excluded { background: #fafafa; color: var(--muted); }
   .prop { border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
   .prop h3 { margin: 0 0 2px; font-size: 15px; }
   .why { font-size: 12.5px; color: var(--muted); margin: 2px 0 10px; }
-  .diff { background: #f3f5f9; border-radius: 8px; padding: 10px 12px; font-size: 13.5px; margin: 8px 0; font-variant-numeric: tabular-nums; }
+  .diff { background: #f3f5f9; border-radius: 8px; padding: 10px 12px; font-size: 13.5px; margin: 8px 0; }
   .diff .add { color: var(--ok); font-weight: 600; }
   .log { font-size: 13px; }
-  .log div { padding: 6px 0; border-top: 1px solid var(--line); }
-  .log div:first-child { border-top: 0; }
+  .log > div { padding: 6px 0; border-top: 1px solid var(--line); }
+  .log > div:first-child { border-top: 0; }
   .ok-pill { background: var(--ok-soft); color: var(--ok); border-radius: 99px; padding: 1px 8px; font-size: 11.5px; font-weight: 600; }
   .side h3 { margin: 0 0 8px; font-size: 14px; }
-  .prefs { font-size: 13.5px; }
+  .prefs { font-size: 13.5px; padding-left: 18px; }
   .prefs li { margin: 3px 0; }
+  .hidden { display: none !important; }
+
+  /* walkthrough mode (?step=N) */
+  body.demo main { margin: 14px auto 110px; zoom: .88; }
+  .hl { outline: 3px solid var(--hl); outline-offset: 4px; border-radius: 10px; box-shadow: 0 0 0 8px rgba(232, 89, 12, .16); }
+  #sub { display: none; }
+  body.demo #sub { display: flex; position: fixed; left: 0; right: 0; bottom: 0; align-items: center; gap: 20px; padding: 18px 40px; background: rgba(16, 20, 32, .94); color: #fff; font-size: 24px; line-height: 1.4; }
+  #sub .badge { flex: none; background: var(--hl); color: #fff; font-size: 14px; font-weight: 700; padding: 4px 12px; border-radius: 99px; }
+  #sub .en, #sub .ko { display: block; }
+  #sub .en { font-size: 17px; color: #c7cddb; }
+  body.l-ko #sub .en, body.l-en #sub .ko { display: none; }
   @media (max-width: 860px) { main { grid-template-columns: 1fr; } }
 </style>
 </head>
-<body>
+<body class="l-both">
 <div class="banner">
-  CONCEPT MOCKUP — not a working product. Sample data is fictional.
-  <small>개념 목업 — 동작하는 제품이 아닙니다. 예시 데이터는 모두 가상입니다.</small>
+  <span class="tb t">CONCEPT MOCKUP — not a working product. Sample data is fictional. ¦ 개념 목업 — 동작하는 제품이 아닙니다. 예시 데이터는 모두 가상입니다.</span>
 </div>
 
 <header class="top">
   <div class="logo">DayOS</div>
-  <nav aria-label="Concept screens">
-    <button data-s="calendar">1 · Calendar / 캘린더</button>
-    <button data-s="consent">2 · Before sending / 전송 전 확인</button>
-    <button data-s="proposal">3 · Suggestions / 추천 제안</button>
-  </nav>
+  <div class="navs">
+    <nav class="navs" aria-label="Concept screens">
+      <button data-s="calendar" class="t">1 · Calendar ¦ 캘린더</button>
+      <button data-s="consent" class="t">2 · Before sending ¦ 전송 전 확인</button>
+      <button data-s="proposal" class="t">3 · Suggestions ¦ 추천 제안</button>
+    </nav>
+    <div class="langs" role="group" aria-label="Language / 언어">
+      <button data-l="en">English</button>
+      <button data-l="ko">한국어</button>
+      <button data-l="both">EN + 한국어</button>
+    </div>
+  </div>
 </header>
 
 <main>
   <!-- Screen 1 -->
   <div class="screen" id="calendar">
-    <section class="card">
-      <h2>Tomorrow · Wed, Nov 12 / 내일 · 11월 12일 (수)</h2>
-      <p class="sub">You manage your own schedule. / 일정은 사용자가 직접 관리합니다.</p>
-      <div class="event"><div class="time">09:30–10:00</div><div><div class="ev-title">Team stand-up / 팀 스탠드업</div></div></div>
-      <div class="event"><div class="time">11:00–13:00</div><div><div class="ev-title">Free time / 빈 시간</div></div></div>
-      <div class="event"><div class="time">14:00–15:00</div><div><div class="ev-title">Quarterly presentation / 분기 발표 <span class="tag">High priority / 높음</span></div></div></div>
-      <div class="event"><div class="time">18:30–19:30</div><div><div class="ev-title">Dinner with a friend / 친구와 저녁</div></div></div>
+    <section class="card" id="ev-card">
+      <h2 class="t">Tomorrow · Wed, Nov 12 ¦ 내일 · 11월 12일 (수)</h2>
+      <p class="sub t">You manage your own schedule. ¦ 일정은 사용자가 직접 관리합니다.</p>
+      <div class="event first"><div class="time">09:30–10:00</div><div class="ev-title t">Team stand-up ¦ 팀 스탠드업</div></div>
+      <div class="event"><div class="time">11:00–13:00</div><div class="ev-title t">Free time ¦ 빈 시간</div></div>
+      <div class="event"><div class="time">14:00–15:00</div><div class="ev-title"><span class="t">Quarterly presentation ¦ 분기 발표</span> <span class="tag t">High priority ¦ 높음</span></div></div>
+      <div class="event"><div class="time">18:30–19:30</div><div class="ev-title t">Dinner with a friend ¦ 친구와 저녁</div></div>
       <div class="row-actions">
-        <button class="btn">+ Add event / 일정 추가</button>
-        <button class="btn primary" data-go="consent">Get recommendations / 추천 받기</button>
+        <button class="btn t" id="btn-add">+ Add event ¦ 일정 추가</button>
+        <button class="btn primary t" id="btn-rec" data-go="consent">Get recommendations ¦ 추천 받기</button>
       </div>
-      <p class="note">AI is not called until you press the button. Reminders work without AI.<br>버튼을 누르기 전에는 AI가 호출되지 않습니다. 알림은 AI 없이 동작합니다.</p>
+      <p class="note tb t">AI is not called until you press the button. Reminders work without AI. ¦ 버튼을 누르기 전에는 AI가 호출되지 않습니다. 알림은 AI 없이 동작합니다.</p>
     </section>
     <aside class="card side">
-      <h3>Your preferences / 내 선호</h3>
+      <h3 class="t">Your preferences ¦ 내 선호</h3>
       <ul class="prefs">
-        <li>Review slides the evening before / 발표 자료는 전날 저녁까지 점검</li>
-        <li>30 min travel buffer / 이동 시간 30분 여유</li>
-        <li>Deep work in the morning / 집중 작업은 오전</li>
+        <li class="t">Review slides the evening before ¦ 발표 자료는 전날 저녁까지 점검</li>
+        <li class="t">30 min travel buffer ¦ 이동 시간 30분 여유</li>
+        <li class="t">Deep work in the morning ¦ 집중 작업은 오전</li>
       </ul>
-      <p class="note">Entered by you; edit or delete anytime.<br>직접 입력한 항목이며 언제든 수정·삭제할 수 있습니다.</p>
+      <p class="note tb t">Entered by you; edit or delete anytime. ¦ 직접 입력한 항목이며 언제든 수정·삭제할 수 있습니다.</p>
     </aside>
   </div>
 
   <!-- Screen 2 -->
   <div class="screen" id="consent">
     <section class="card">
-      <h2>Review what will be sent / 전송 내용 확인</h2>
-      <p class="sub">To: Cloud model provider (example) · Nothing is sent until you agree.<br>받는 곳: 클라우드 모델 제공자(예시) · 동의하기 전에는 아무것도 전송되지 않습니다.</p>
-      <ul class="plain">
-        <li><span>Event titles &amp; times (Nov 12–13) / 일정 제목·시간</span><span>included / 포함</span></li>
-        <li><span>Priority marks / 우선순위 표시</span><span>included / 포함</span></li>
-        <li><span>Preferences (3) / 선호 3개</span><span>included / 포함</span></li>
-        <li><span>Recent feedback summary / 최근 피드백 요약</span><span>included / 포함</span></li>
-        <li class="excluded"><span>Event notes &amp; locations / 메모·위치</span><span>not sent / 전송 안 함</span></li>
-        <li class="excluded"><span>Other days / 다른 날짜 일정</span><span>not sent / 전송 안 함</span></li>
-      </ul>
-      <label class="note"><input type="checkbox"> I agree to send this to this provider. You can withdraw consent anytime.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이 제공자에게 전송하는 데 동의합니다. 동의는 언제든 철회할 수 있습니다.</label>
-      <div class="row-actions">
-        <button class="btn" data-go="calendar">Cancel / 취소</button>
-        <button class="btn primary" data-go="proposal">Agree &amp; send / 동의하고 보내기</button>
+      <h2 class="t">Review what will be sent ¦ 전송 내용 확인</h2>
+      <p class="sub tb t">To: Cloud model provider (example). Nothing is sent until you agree. ¦ 받는 곳: 클라우드 모델 제공자(예시). 동의하기 전에는 아무것도 전송되지 않습니다.</p>
+      <div id="consent-list">
+        <ul class="plain">
+          <li><span class="t">Event titles &amp; times (Nov 12–13) ¦ 일정 제목·시간</span><span class="r t">included ¦ 포함</span></li>
+          <li><span class="t">Priority marks ¦ 우선순위 표시</span><span class="r t">included ¦ 포함</span></li>
+          <li><span class="t">Preferences (3) ¦ 선호 3개</span><span class="r t">included ¦ 포함</span></li>
+          <li><span class="t">Recent feedback summary ¦ 최근 피드백 요약</span><span class="r t">included ¦ 포함</span></li>
+          <li class="excluded"><span class="t">Event notes &amp; locations ¦ 메모·위치</span><span class="r t">not sent ¦ 전송 안 함</span></li>
+          <li class="excluded"><span class="t">Other days ¦ 다른 날짜 일정</span><span class="r t">not sent ¦ 전송 안 함</span></li>
+        </ul>
+      </div>
+      <div id="consent-actions">
+        <label class="note"><input type="checkbox" id="agree"> <span class="tb t">I agree to send this to this provider. You can withdraw consent anytime. ¦ 이 제공자에게 전송하는 데 동의합니다. 동의는 언제든 철회할 수 있습니다.</span></label>
+        <div class="row-actions">
+          <button class="btn t" data-go="calendar">Cancel ¦ 취소</button>
+          <button class="btn primary t" data-go="proposal">Agree &amp; send ¦ 동의하고 보내기</button>
+        </div>
       </div>
     </section>
     <aside class="card side">
-      <h3>Per-provider consent / 제공자별 동의</h3>
-      <p class="note">Consent is stored separately for each model provider.<br>동의는 모델 제공자마다 따로 저장됩니다.</p>
+      <h3 class="t">Per-provider consent ¦ 제공자별 동의</h3>
+      <p class="note tb t">Consent is stored separately for each model provider. ¦ 동의는 모델 제공자마다 따로 저장됩니다.</p>
     </aside>
   </div>
 
   <!-- Screen 3 -->
   <div class="screen" id="proposal">
     <section class="card">
-      <h2>Suggestions for tomorrow / 내일을 위한 제안</h2>
-      <p class="sub">Proposals only. Your schedule changes only if you accept.<br>제안일 뿐입니다. 수락해야만 일정에 반영됩니다.</p>
+      <h2 class="t">Suggestions for tomorrow ¦ 내일을 위한 제안</h2>
+      <p class="sub tb t">Proposals only. Your schedule changes only if you accept. ¦ 제안일 뿐입니다. 수락해야만 일정에 반영됩니다.</p>
 
-      <div class="prop">
-        <h3>Prepare: final check of slides / 준비: 발표 자료 최종 점검</h3>
-        <div class="why">Why: high-priority presentation + your “review the evening before” preference.<br>이유: 우선순위 높은 발표 + “전날 저녁 점검” 선호.</div>
-        <div class="diff"><span class="add">+ Add</span> Today 17:30–18:30 “Review slides” / 오늘 17:30–18:30 “자료 점검” 추가</div>
+      <div class="prop" id="prop1">
+        <h3 class="t">Prepare: final check of slides ¦ 준비: 발표 자료 최종 점검</h3>
+        <div class="why tb t">Why: high-priority presentation + your “review the evening before” preference. ¦ 이유: 우선순위 높은 발표 + “전날 저녁 점검” 선호.</div>
+        <div class="diff"><span class="add">+ </span><span class="t">Add today 17:30–18:30 “Review slides” ¦ 오늘 17:30–18:30 “자료 점검” 추가</span></div>
         <div class="row-actions">
-          <button class="btn ok">Accept / 수락</button><button class="btn">Reject / 거절</button><button class="btn">Later / 나중에</button>
+          <button class="btn ok accept t" data-name="Review slides ¦ 자료 점검">Accept ¦ 수락</button><button class="btn t">Reject ¦ 거절</button><button class="btn t">Later ¦ 나중에</button>
+        </div>
+      </div>
+
+      <div class="prop" id="prop2">
+        <h3 class="t">Next step: travel buffer ¦ 다음 행동: 이동 시간 확보</h3>
+        <div class="why tb t">Why: your 30 min travel buffer preference. ¦ 이유: 이동 시간 30분 여유 선호.</div>
+        <div class="diff"><span class="add">+ </span><span class="t">Add tomorrow 13:30–14:00 “Travel &amp; setup” ¦ 내일 13:30–14:00 “이동·준비” 추가</span></div>
+        <div class="row-actions">
+          <button class="btn ok accept t" data-name="Travel &amp; setup ¦ 이동·준비">Accept ¦ 수락</button><button class="btn t">Reject ¦ 거절</button><button class="btn t">Later ¦ 나중에</button>
         </div>
       </div>
 
       <div class="prop">
-        <h3>Next step: travel buffer / 다음 행동: 이동 시간 확보</h3>
-        <div class="why">Why: your 30 min travel buffer preference.<br>이유: 이동 시간 30분 여유 선호.</div>
-        <div class="diff"><span class="add">+ Add</span> Tomorrow 13:30–14:00 “Travel &amp; setup” / 내일 13:30–14:00 “이동·준비” 추가</div>
-        <div class="row-actions">
-          <button class="btn ok">Accept / 수락</button><button class="btn">Reject / 거절</button><button class="btn">Later / 나중에</button>
-        </div>
-      </div>
-
-      <div class="prop">
-        <h3>AI draft: opening lines / AI 초안: 발표 시작 멘트 <span class="tag ghost">Draft only / 초안만</span></h3>
-        <div class="why">Text only. Nothing is sent or scheduled.<br>텍스트만 제공합니다. 전송·일정 등록은 하지 않습니다.</div>
-        <div class="row-actions"><button class="btn">View draft / 초안 보기</button></div>
+        <h3><span class="t">AI draft: opening lines ¦ AI 초안: 발표 시작 멘트</span> <span class="tag ghost t">Draft only ¦ 초안만</span></h3>
+        <div class="why tb t">Text only. Nothing is sent or scheduled. ¦ 텍스트만 제공합니다. 전송·일정 등록은 하지 않습니다.</div>
+        <div class="row-actions"><button class="btn t">View draft ¦ 초안 보기</button></div>
       </div>
     </section>
-    <aside class="card side">
-      <h3>Execution log / 실행 기록</h3>
-      <div class="log">
-        <div><span class="ok-pill">Applied / 적용됨</span><br>“Review slides” added, approved by you at 16:42<br>“자료 점검” 추가 · 16:42 사용자 승인</div>
-        <div>Proposal #12 · model: <i>example-model</i> · 3.1 s<br>제안 #12 · 모델: 예시 · 3.1초</div>
+    <aside class="card side" id="log">
+      <h3 class="t">Execution log ¦ 실행 기록</h3>
+      <div class="log" id="log-list">
+        <div><span class="t">Proposal #12 · model: example · 3.1 s ¦ 제안 #12 · 모델: 예시 · 3.1초</span></div>
       </div>
-      <p class="note">Every applied change is recorded and visible to you.<br>적용된 변경은 모두 기록되며 사용자가 볼 수 있습니다.</p>
+      <p class="note tb t">Every applied change is recorded and visible to you. ¦ 적용된 변경은 모두 기록되며 사용자가 볼 수 있습니다.</p>
     </aside>
   </div>
 </main>
 
+<div id="sub"><span class="badge" id="badge"></span><div id="sub-text"></div></div>
+
 <script>
+  var SEP = " ¦ ";
+  function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  function pair(text, block) {
+    var p = text.split(SEP), en = p[0], ko = p.length > 1 ? p[1] : p[0];
+    var sep = block ? '<span class="sep"></span>' : '<span class="sep"> / </span>';
+    return '<span class="en">' + en + '</span>' + sep + '<span class="ko">' + ko + '</span>';
+  }
+  document.querySelectorAll(".t").forEach(function (el) {
+    el.innerHTML = pair(el.innerHTML.replace(/&nbsp;/g, " ").replace(/¦/g, "¦"), el.classList.contains("tb"));
+  });
+  var q = new URLSearchParams(location.search);
   var names = ["calendar", "consent", "proposal"];
+  function setLang(l) {
+    document.body.classList.remove("l-en", "l-ko", "l-both");
+    document.body.classList.add("l-" + l);
+    document.documentElement.lang = l === "ko" ? "ko" : "en";
+    document.querySelectorAll(".langs button").forEach(function (b) { b.classList.toggle("on", b.dataset.l === l); });
+  }
   function show(name) {
     if (names.indexOf(name) < 0) name = "calendar";
     names.forEach(function (n) { document.getElementById(n).classList.toggle("on", n === name); });
     document.querySelectorAll("nav button").forEach(function (b) { b.classList.toggle("on", b.dataset.s === name); });
-    if (location.hash !== "#" + name) history.replaceState(null, "", "#" + name);
+    if (!q.has("step") && location.hash !== "#" + name) history.replaceState(null, "", "#" + name);
   }
   document.querySelectorAll("nav button").forEach(function (b) { b.onclick = function () { show(b.dataset.s); }; });
   document.querySelectorAll("[data-go]").forEach(function (b) { b.onclick = function () { show(b.dataset.go); }; });
-  show(location.hash.slice(1));
+  document.querySelectorAll(".langs button").forEach(function (b) { b.onclick = function () { setLang(b.dataset.l); }; });
+
+  function accept(btn) {
+    if (btn.classList.contains("done")) return;
+    btn.classList.remove("ok"); btn.classList.add("done");
+    btn.innerHTML = pair("Accepted ✓" + SEP + "수락됨 ✓");
+    var row = document.createElement("div");
+    row.innerHTML = '<span class="ok-pill">' + pair("Applied" + SEP + "적용됨") + '</span><br>' +
+      pair("“" + btn.dataset.name.split(SEP)[0] + "” added, approved by you" + SEP +
+           "“" + btn.dataset.name.split(SEP)[1] + "” 추가 · 사용자 승인");
+    document.getElementById("log-list").insertBefore(row, document.getElementById("log-list").firstChild);
+  }
+  document.querySelectorAll(".accept").forEach(function (b) { b.onclick = function () { accept(b); }; });
+
+  // Walkthrough: ?step=N&lang=ko renders one captioned frame (used to make the demo video).
+  var STEPS = [
+    { s: "calendar", t: "#ev-card", ko: "일정은 사용자가 직접 관리합니다. 일정과 선호, 우선순위를 직접 입력합니다.", en: "You manage your own schedule, preferences, and priorities." },
+    { s: "calendar", t: "#btn-add", ko: "‘일정 추가’로 새 일정을 직접 만듭니다. 이 단계에서 AI는 호출되지 않습니다.", en: "Add events yourself. The AI is not called at this point." },
+    { s: "calendar", t: "#btn-rec", ko: "추천이 필요할 때만 ‘추천 받기’를 누릅니다. 누르기 전에는 AI가 동작하지 않습니다.", en: "Press “Get recommendations” only when you want them." },
+    { s: "consent", t: "#consent-list", ko: "모델에 보낼 정보를 먼저 확인합니다. 메모와 위치 등은 보내지 않습니다.", en: "You see exactly what will be sent. Notes and locations are not sent." },
+    { s: "consent", t: "#consent-actions", ko: "동의에 체크하고 ‘동의하고 보내기’를 눌러야 전송됩니다. 동의는 언제든 철회할 수 있습니다.", en: "Data is sent only after you agree. Consent can be withdrawn anytime.", pre: function () { document.getElementById("agree").checked = true; } },
+    { s: "proposal", t: "#prop1", ko: "AI는 제안만 합니다. 제안마다 이유와 바뀌는 내용이 함께 표시됩니다.", en: "The AI only proposes. Each card shows the reason and the exact change." },
+    { s: "proposal", t: "#log", ko: "수락한 제안만 일정에 반영되고, 결과는 실행 기록에 남습니다.", en: "Only accepted proposals are applied, and each is recorded.", pre: function () { accept(document.querySelector("#prop1 .accept")); } },
+    { s: "proposal", t: "#prop2", ko: "수락하지 않으면 일정은 바뀌지 않습니다. (이 영상은 개념 목업이며 실제 제품이 아닙니다.)", en: "If you do not accept, nothing changes. (Concept mockup, not a real product.)" }
+  ];
+  var lang = q.get("lang") || "both";
+  setLang(lang);
+  if (q.has("step")) {
+    var i = Math.max(0, Math.min(STEPS.length - 1, parseInt(q.get("step"), 10) - 1));
+    var st = STEPS[i];
+    document.body.classList.add("demo");
+    show(st.s);
+    if (st.pre) st.pre();
+    var el = document.querySelector(st.t); el.classList.add("hl");
+    document.getElementById("badge").textContent = "STEP " + (i + 1) + " / " + STEPS.length;
+    document.getElementById("sub-text").innerHTML = '<span class="ko">' + esc(st.ko) + '</span><span class="en">' + esc(st.en) + '</span>';
+    window.__steps = STEPS.length;
+  } else {
+    show(location.hash.slice(1));
+  }
 </script>
 </body>
 </html>
