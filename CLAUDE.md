@@ -9,6 +9,10 @@ DayOS는 사용자 주도 Calendar, 자동 알림, 선택적 AI 추천, 승인 �
 |---|---|
 | `docs/PRODUCT_SPEC.md` | 무엇을 만드는지, MVP 범위, 개인정보 요구사항 |
 | `docs/ARCHITECTURE.md` | 구조, 모델 계층, 제안→승인 구조 |
+| `docs/PERSONALIZATION.md` | 개인화 요구사항 (제안 vs 실행, 요청 시에만 추천) |
+| `docs/EVALUATION.md` | 개인화 평가 항목 |
+| `docs/SCENARIOS.md` | 사용자 시나리오, Concept Wireframe |
+| `docs/DOCUMENT_CLASSIFICATION.md` | 공개/비공개 분류 |
 | `docs/WORKFLOW.md` | 브랜치·PR·테스트 방식 |
 | `docs/STORAGE_POLICY.md` | 외장하드와 대용량 파일 정책 |
 | `docs/MODEL_REGISTRY.md` | 모델 조사·평가 기록 |
@@ -38,8 +42,12 @@ DayOS는 사용자 주도 Calendar, 자동 알림, 선택적 AI 추천, 승인 �
 - Python 3.11 (Homebrew), uv, Node 24, pnpm 사용 가능.
 - 저장공간 점검: `cd ~/dayos && scripts/check-storage.sh`
 
+## 공개 범위
+
+저장소는 Public이다. 개인화 내부 로직(가중치·순위 규칙·프롬프트), 평가 케이스 원본, 사업·가격 자료, 사용자 데이터는 커밋하지 않고 `/private/`(Git 제외)에 둔다. 분류는 `docs/DOCUMENT_CLASSIFICATION.md`. 저장소 이름·공개 설정은 오너만 바꾼다.
+
 ## 현재 상태
 
-- 머지됨: 외장하드 저장 정책, 모델/데이터셋 registry, 다운로드·점검 스크립트 (PR #2)
+- 머지됨: 외장하드 저장 정책, 모델/데이터셋 registry, 다운로드·점검 스크립트 (PR #2), 제품 문서 (PR #3), 기술 조사 (PR #4), 저작권 고지 (PR #5)
 - 앱 코드: **없음.** 기술 스택은 미정이며 오너가 결정하기 전에는 앱 코드를 만들지 않는다.
 - 모델 다운로드: 보류 (외장하드 연결 후 오너 승인 필요)

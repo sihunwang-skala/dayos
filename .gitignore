@@ -1,3 +1,6 @@
+# --- Private planning material (see docs/DOCUMENT_CLASSIFICATION.md) ---
+/private/
+
 # --- Secrets / local config ---
 .env
 .env.*
